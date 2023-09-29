@@ -1,0 +1,457 @@
+use Empresa
+switched to db Empresa
+db
+Empresa
+show collections
+ 
+db.createCollection("Pessoa")
+{ ok: 1 }
+db.Pessoa.insertOne({nome:"Pedro", idade: 20, cargo: "Dono", cidade:"Campina grande"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65136c57b7290b158e2f7179")
+}
+db.Pessoa.insertOne({nome:"Bruno", idade: 23, cargo: "Senior", cidade:"Campina grande"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65136c6db7290b158e2f717a")
+}
+db.Pessoa.insertOne({nome:"João", idade: 25, cargo: "Junior", cidade:"São Paulo"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65136d72b7290b158e2f717b")
+}
+db.Pessoa.insertOne({nome:"Maria", idade: 30, cargo: "Pleno", cidade:"Rio de Janeiro"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65136d7bb7290b158e2f717c")
+}
+db.Pessoa.insertOne({nome:"José", idade: 35, cargo: "Senior", cidade:"Belo Horizonte"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65136d83b7290b158e2f717d")
+}
+db.Pessoa.insertOne({nome:"Laura", idade: 33, cargo: "Pleno", cidade:"Brasília"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65136d8db7290b158e2f717e")
+}
+db.Pessoa.insertOne({nome:"Carlos", idade: 40, cargo: "Senior", cidade:"Porto Alegre"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65136d94b7290b158e2f717f")
+}
+db.Pessoa.insertOne({nome:"Mariana", idade: 27, cargo: "Junior", cidade:"Curitiba"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65136d9cb7290b158e2f7180")
+}
+db.Pessoa.insertOne({nome:"Lucas", idade: 32, cargo: "Pleno", cidade:"Recife"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65136da2b7290b158e2f7181")
+}
+db.Pessoa.insertOne({nome:"Gabriel", idade: 29, cargo: "Junior", cidade:"Manaus"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65136dadb7290b158e2f7182")
+}
+db.Pessoa.updateOne({nome:"Bruno"}, {$set:{nome:"Bruno queiroz"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Bruno"}, {$set:{Endereco:"rua 1"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Pedro"}, {$set:{nome:"Pedro Patrão"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Pedro Patrão"}, {$set:{Endereco:"rua 2"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.find({idade: 25})
+{
+  _id: ObjectId("65136d72b7290b158e2f717b"),
+  nome: 'João',
+  idade: 25,
+  cargo: 'Junior',
+  cidade: 'São Paulo'
+}
+db.Pessoa.find({idade:{$gte:25})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.Pessoa.find({idade:{$gte:25}})
+{
+  _id: ObjectId("65136d72b7290b158e2f717b"),
+  nome: 'João',
+  idade: 25,
+  cargo: 'Junior',
+  cidade: 'São Paulo'
+}
+{
+  _id: ObjectId("65136d7bb7290b158e2f717c"),
+  nome: 'Maria',
+  idade: 30,
+  cargo: 'Pleno',
+  cidade: 'Rio de Janeiro'
+}
+{
+  _id: ObjectId("65136d83b7290b158e2f717d"),
+  nome: 'José',
+  idade: 35,
+  cargo: 'Senior',
+  cidade: 'Belo Horizonte'
+}
+{
+  _id: ObjectId("65136d8db7290b158e2f717e"),
+  nome: 'Laura',
+  idade: 33,
+  cargo: 'Pleno',
+  cidade: 'Brasília'
+}
+{
+  _id: ObjectId("65136d94b7290b158e2f717f"),
+  nome: 'Carlos',
+  idade: 40,
+  cargo: 'Senior',
+  cidade: 'Porto Alegre'
+}
+{
+  _id: ObjectId("65136d9cb7290b158e2f7180"),
+  nome: 'Mariana',
+  idade: 27,
+  cargo: 'Junior',
+  cidade: 'Curitiba'
+}
+{
+  _id: ObjectId("65136da2b7290b158e2f7181"),
+  nome: 'Lucas',
+  idade: 32,
+  cargo: 'Pleno',
+  cidade: 'Recife'
+}
+{
+  _id: ObjectId("65136dadb7290b158e2f7182"),
+  nome: 'Gabriel',
+  idade: 29,
+  cargo: 'Junior',
+  cidade: 'Manaus'
+}
+db.Pessoa.find().pretty({idade:{$gte:25}})
+{
+  _id: ObjectId("65136c57b7290b158e2f7179"),
+  nome: 'Pedro Patrão',
+  idade: 20,
+  cargo: 'Dono',
+  cidade: 'Campina grande',
+  Endereco: 'rua 2'
+}
+{
+  _id: ObjectId("65136c6db7290b158e2f717a"),
+  nome: 'Bruno queiroz',
+  idade: 23,
+  cargo: 'Senior',
+  cidade: 'Campina grande'
+}
+{
+  _id: ObjectId("65136d72b7290b158e2f717b"),
+  nome: 'João',
+  idade: 25,
+  cargo: 'Junior',
+  cidade: 'São Paulo'
+}
+{
+  _id: ObjectId("65136d7bb7290b158e2f717c"),
+  nome: 'Maria',
+  idade: 30,
+  cargo: 'Pleno',
+  cidade: 'Rio de Janeiro'
+}
+{
+  _id: ObjectId("65136d83b7290b158e2f717d"),
+  nome: 'José',
+  idade: 35,
+  cargo: 'Senior',
+  cidade: 'Belo Horizonte'
+}
+{
+  _id: ObjectId("65136d8db7290b158e2f717e"),
+  nome: 'Laura',
+  idade: 33,
+  cargo: 'Pleno',
+  cidade: 'Brasília'
+}
+{
+  _id: ObjectId("65136d94b7290b158e2f717f"),
+  nome: 'Carlos',
+  idade: 40,
+  cargo: 'Senior',
+  cidade: 'Porto Alegre'
+}
+{
+  _id: ObjectId("65136d9cb7290b158e2f7180"),
+  nome: 'Mariana',
+  idade: 27,
+  cargo: 'Junior',
+  cidade: 'Curitiba'
+}
+{
+  _id: ObjectId("65136da2b7290b158e2f7181"),
+  nome: 'Lucas',
+  idade: 32,
+  cargo: 'Pleno',
+  cidade: 'Recife'
+}
+{
+  _id: ObjectId("65136dadb7290b158e2f7182"),
+  nome: 'Gabriel',
+  idade: 29,
+  cargo: 'Junior',
+  cidade: 'Manaus'
+}
+db.idade.aggregate([])
+db.idade.aggregate([
+  {
+		$group: {
+				_id: "idade"},
+				
+
+}
+
+
+
+])
+db.idade.aggregate([
+  {
+		$group: {
+				_id: "idade"
+				idade_media: {}},
+
+}
+])
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.idade.aggregate([
+  {
+		$group: {
+				_id: "idade"
+				idade_media: {
+						$sum: {
+							$multiply: ["idade", "cidade"]
+}}},
+}
+])
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.idade.aggregate([
+  {
+		$group: {
+				_id: "idade",
+				idade_media: {
+						$sum: {
+							$multiply: ["idade", "cidade"]
+						}
+					}
+				}
+			}
+])
+MongoServerError: Failed to optimize pipeline :: caused by :: $multiply only supports numeric types, not string
+db.idade.aggregate([
+  {
+		$group: {
+				_id: "idade",
+				idade_media: {
+						$sum: {
+							$multiply: ["$idade", "cidade"]
+						}
+					}
+				}
+			}
+])
+db.idade.aggregate([
+  {
+		$group: {
+				_id: "idade",
+				idade_media: {
+						$sum: {
+							$multiply: ["$idade", "$cidade"]
+						}
+					}
+				}
+			}
+])
+db.idade.aggregate([
+  {
+		$group: {
+				_id: "idade",
+				idade_media: {
+						$sum: {
+							$multiply: ["$idade", "$cidade"]
+						}
+					}
+				}
+			}
+])
+db.Pessoa.aggregate([
+  {
+		$group: {
+				_id: "idade",
+				idade_media: {
+						$sum: {
+							$multiply: ["$idade", "$cidade"]
+						}
+					}
+				}
+			}
+])
+MongoServerError: PlanExecutor error during aggregation :: caused by :: only numbers are allowed in an $multiply expression
+db.idade.aggregate([
+  {
+		$group: {
+				_id: "idade",
+				idade_media: {
+						$sum: {
+							$multiply: ["$idade", "$cidade"]
+						}
+					}
+				}
+			}
+])
+db.Pessoa.aggregate([
+    {
+        $group: {
+            _id: "$cidade",
+            mediaIdade: { $avg: "$idade" }
+        }
+    }
+])
+{
+  _id: 'Campina grande',
+  mediaIdade: 21.5
+}
+{
+  _id: 'Brasília',
+  mediaIdade: 33
+}
+{
+  _id: 'Curitiba',
+  mediaIdade: 27
+}
+{
+  _id: 'Recife',
+  mediaIdade: 32
+}
+{
+  _id: 'Manaus',
+  mediaIdade: 29
+}
+{
+  _id: 'São Paulo',
+  mediaIdade: 25
+}
+{
+  _id: 'Belo Horizonte',
+  mediaIdade: 35
+}
+{
+  _id: 'Rio de Janeiro',
+  mediaIdade: 30
+}
+{
+  _id: 'Porto Alegre',
+  mediaIdade: 40
+}
+db.createCollection("SetoresTrabalho")
+
+db.SetoresTrabalho.insertMany([
+  { sigla: "TI", descricao: "Tecnologia da Informação", salario: 7000 },
+  { sigla: "RH", descricao: "Recursos Humanos", salario: 5000 },
+  { sigla: "VND", descricao: "Vendas", salario: 6000 },
+  { sigla: "MKT", descricao: "Marketing", salario: 5500 }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6513736fb7290b158e2f7183"),
+    '1': ObjectId("6513736fb7290b158e2f7184"),
+    '2': ObjectId("6513736fb7290b158e2f7185"),
+    '3': ObjectId("6513736fb7290b158e2f7186")
+  }
+}
+db.SetoresTrabalho.find()
+{
+  _id: ObjectId("6513736fb7290b158e2f7183"),
+  sigla: 'TI',
+  descricao: 'Tecnologia da Informação',
+  salario: 7000
+}
+{
+  _id: ObjectId("6513736fb7290b158e2f7184"),
+  sigla: 'RH',
+  descricao: 'Recursos Humanos',
+  salario: 5000
+}
+{
+  _id: ObjectId("6513736fb7290b158e2f7185"),
+  sigla: 'VND',
+  descricao: 'Vendas',
+  salario: 6000
+}
+{
+  _id: ObjectId("6513736fb7290b158e2f7186"),
+  sigla: 'MKT',
+  descricao: 'Marketing',
+  salario: 5500
+}
+db.SetoresTrabalho.aggregate([
+    {
+        $sort: { salario: -1 }
+    },
+    {
+        $limit: 1
+    }
+])
+{
+  _id: ObjectId("6513736fb7290b158e2f7183"),
+  sigla: 'TI',
+  descricao: 'Tecnologia da Informação',
+  salario: 7000
+}
+db.SetoresTrabalho.aggregate([
+    {
+        $sort: { salario: 1 }
+    },
+    {
+        $limit: 1
+    }
+])
+{
+  _id: ObjectId("6513736fb7290b158e2f7184"),
+  sigla: 'RH',
+  descricao: 'Recursos Humanos',
+  salario: 5000
+}
+db.SetoresTrabalho.aggregate([
+    {
+        $group: {
+            _id: null,
+            mediaSalario: { $avg: "$salario" }
+        }
+    }
+])
